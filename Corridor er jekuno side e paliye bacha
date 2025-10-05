@@ -1,0 +1,92 @@
+/*Intuition :-
+    Proshner moddhe ami ekta corridor er moddhe achi jar length holo n . Amar current
+    position dewa ache k . Duita exit point ache corridor er . Point duita holo 0 ar n+1.
+    Corridor er proti ta index e kichu health point ache ja positive o negative hote
+    pare . Kuno ekta index e jodi amra move kori tahole amader currentHealth er sathe
+    oi index er health point gula add hobe . Proshno holo amra ki ber hote parbo ??
+
+    Ekhane 1 based indexing niye kaaj kora hoise jehetu proshner indexing e 0 and n+1
+    bebohar kora hoise . Amader current position er value ta CurHealth er sathe add hobe.
+    Duita ptr thakbe jar ekta curPosition er left e move korbe arekta right e move korbe.
+
+    Ekhon loop er vitore 3 ta kaaj hocche . 
+    1) Left Iteration , 2) Right Iteration , 3) Making Decision .
+
+    Left and right interation e ja kaaj ta hobe ta holo . 
+    1) Jotokkhon porjonto oi side e exit na touch korchi and amader health >= 0 thaktese
+    amra amader oi side er jonno temporary variable ta ke move korabo . Jodi kuno point
+    e health >= curSum hoye jay tahole oi point ta ke mark kore rakhbo . PashaPashi 
+    oi point e health koto hoisilo oita o store kore rakhbo .
+
+    2) Jodi leftIndex = 0 ba right index = n+1 hoye jay tahole break kore ber hoye
+    jabo and Yes print kore dibo . Jodi leftval == rightval == currSum hoy tahole
+    amra kuno side ei move korte parsi nah . Tai no print kore return kore jabo.
+
+    3)Decision Making :- 
+
+        if(lvalue>curSum and rvalue>curSum){
+            if(lvalue>=rvalue){
+                lptr = newl ; curSum = lvalue ;
+            }else{
+                rptr = newr ; curSum = rvalue ;
+            }
+        }else if(lvalue>curSum){
+                lptr = newl ; curSum = lvalue ;
+        }else{
+                rptr = newr ; curSum = rvalue ;
+        }
+
+    Ei shorto er vitti te lptr or rptr and CurrentSum updated hobe .
+*/
+
+void giveMeMyGloryBack() {
+    ll n , k ; cin >> n >> k ; vll vec(n+1) ; bool shomvob = true ;
+    for(int i = 1 ; i <= n ; i++) cin >> vec[i] ; 
+    int lptr = k-1 ; int rptr = k+1 ; ll curSum = vec[k] ;
+    while(true){
+        
+        int lidx = lptr ; int newl = lptr ;
+        ll lvalue = curSum ; ll tempSum = curSum ;
+        
+        while(lidx>0 and tempSum+vec[lidx]>=0){
+            tempSum += vec[lidx] ; lidx-- ;
+            if(tempSum>=lvalue){
+                lvalue = tempSum ; newl = lidx ;
+            }
+        }
+
+        if(lidx<1) break ;
+
+        int ridx = rptr ; int newr = rptr ;
+        ll rvalue = curSum ; tempSum = curSum ;
+
+        while(ridx<=n and tempSum+vec[ridx]>=0){
+            tempSum += vec[ridx] ; ridx++ ;
+            if(tempSum>=rvalue){
+                rvalue = tempSum ; newr = ridx ;
+            }
+        }
+
+        if(ridx>n) break ;
+
+        if(lvalue==curSum and rvalue==curSum){
+            shomvob = false ; break ;
+        }
+
+        if(lvalue>curSum and rvalue>curSum){
+            if(lvalue>=rvalue){
+                lptr = newl ; curSum = lvalue ;
+            }else{
+                rptr = newr ; curSum = rvalue ;
+            }
+        }else if(lvalue>curSum){
+                lptr = newl ; curSum = lvalue ;
+        }else{
+                rptr = newr ; curSum = rvalue ;
+        }
+    }
+
+    if(shomvob) yes ;
+    else no ;
+    
+}
