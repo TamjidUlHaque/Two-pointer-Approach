@@ -40,3 +40,57 @@ void giveMeMyGloryBack() {
     }
     cout << len(ache) << endl ;
 }
+
+______________________________________________NEW SOLUTION_____________________________________________________
+
+/*Intuition :-
+    Ekhane map er moddhe store kora hocche gari gula kun serial e tunnel e entry
+    nise . Ei data use kore kun serial e exit niche oita posn namok vector er moddhe
+    store kore nisi . Ekhon gari gula jei serial e entry nise oi serial e ber houwar
+    kotha . Amra position vector ta toiri korechi jei serial e gari gula probesh 
+    koreche shei onujayi . Tader leaving index gular value hocche index e thaka value.
+
+    Tarmane leaving value gula ekta arektar cheye chuto hobe . Jodi posn[0] te thaka
+    value posn[1] e thaka value er cheye boro hoy tar mane holo posn[0] age ber 
+    hoyeche , erpore posn[1] ber hoyeche . Kintu jodi posn[3] er value posn[2] theke
+    chuto hoy tar mane posn[3] age ber hoyeche , kintu dhukar shomoy posn[3] age
+    dhukechilo . Tarmane posn[3] obossoi posn[2] ke overtake koreche . 
+
+    Mane mone kori gari gula ber hoyeche 
+
+    2 4 7 1 5 3 8 6 9 
+
+    Ekhane 1st e je gari dhukse sheita 2 no e ber hoise
+    2nd e je gari dhukse sheita 4 no e ber hoise 
+    3rd e je gari dhukse sheita 7 no e ber hoise 
+    
+    Tarmane era nijeder respective position theke pichone , tar mane era overtake kore nai .
+
+    4th e je gari dhukse sheita 1st e ber hoise, 3 ta gari overtake korse , {{Arrested}}
+    5th e je gari dhukse sheita 3rd garir age ber hoise , {{Arrested}}
+    6th e je gari dhukse shieta 3rd e ache , tar mane 2nd , 3rd , 5th position e thaka gari overtake korse.
+
+
+    Abar 7th jeita dhukse oita overtake kore ni , 8 no position e bair hoise .
+
+    8th e jeita dhukse oita 7th ke ar 3rd ke overtake korse . {{Arrested}}
+
+    Shobar last e jeita dhukse last e ber hoise , kuno overtake kore ni .
+*/
+
+
+void giveMeMyGloryBack() {
+    int n ; cin >> n ; vi entry(n),exit(n),posn(n) ; map<int,int> mp ;
+    tamjid(n){
+        cin >> entry[i] ; mp[entry[i]] = i ;
+    }
+    tamjid(n){
+        cin >> exit[i] ; posn[mp[exit[i]]] = i ;
+    } 
+    ll arrested = 0 ; ll curMax = posn.front() ;
+    for(int i = 1 ; i < n ; i++){
+        if(posn[i]>curMax) curMax = posn[i] ;
+        else arrested++ ;
+    }
+    cout << arrested << endl ;
+}
