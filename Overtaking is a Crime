@@ -1,0 +1,42 @@
+/*Intuition :-
+    Proshner moddhe bola hoise je ekta tunnel dewa ache , oi tunnel e kun krome
+    gari gula dhukse ta store korse array A , ar kun krome gari gula bair hoitase
+    eida store korse array B . Ekhon bolte hobe total koyta gari overtake korse.
+
+    Jodi kuno gari overtake na kore tahole duitar kromo e same thakar kotha .
+    Mane for every i from 1 to n , a[i] = b[i] . Ekhon duita pointer newa hocche.
+    Idx ar ptr nam e . Idx er kaaj holo array A te iterate kora , ptr er kaaj holo 
+    array B te iterate kora .
+
+    1) Jodi a[i] == b[i] hoy tahole amader kichui korte hobe nah . Gari ta nijer 
+    thik position e ache . Kintu jodi array ta nijer position e na thake tobe:-
+    
+    Ekta set toiri korbo jekhane oi car gular number store korbo jara mismatch 
+    ghotacche . Karon array B diye amra check kortesi A er kromo onujayi shob thik
+    thak ache ki nah . Ekhon jodi A er oi element already B er jei position e achi
+    tar age e ber hoye jay oita check korar to kuno mane hoy nah .
+
+    i) Jodi a[i] != b[i] hoy and a[i] already mismatchCarSet e present thake tahole
+    idx++ kore jabo . Mane oi car already police er kache caught khaise .
+
+    ii) Jodi mismatchCarSet e police je car check kortese oi Car na thake tahole 
+    police oi car ke arrest korbe .
+*/
+
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; vll a(n),b(n) ; set<int> ache ;
+    tamjid(n) cin >> a[i] ; tamjid(n) cin >> b[i] ;
+    ll idx = 0 , ptr = 0 ; 
+    while(idx < n and ptr < n){
+        if(a[idx]==b[ptr]){
+            idx++ ; ptr++ ;
+        }else if(ache.count(a[idx])){
+            idx++ ;
+        }else{
+            ache.insert(b[ptr]) ;
+            ptr++ ;
+        }
+    }
+    cout << len(ache) << endl ;
+}
