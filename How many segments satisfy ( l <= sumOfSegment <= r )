@@ -1,0 +1,26 @@
+/*Intuition :-
+    Proshner moddhe bola hoise je ekta n size er array dewa thakbe , total koto 
+    gula emon segment pawa shomvob jader sum l theke boro othoba shoman and 
+    r theke chuto othoba shoman . 
+
+    Ekta classic two pointer based problem jekhane right pointer segment er
+    length barabe . Left pointer segment er length komabe . Jokhon e target value
+    reach kore felbo duita pointer e erporer index e chole ashbe and ans++ hobe .
+
+*/
+
+void giveMeMyGloryBack() {
+    ll n , l , r ; cin >> n >> l >> r ; vll vec(n) ; ll ans = 0LL ;
+    tamjid(n) cin >> vec[i] ; ll curSum = 0LL , lptr = 0LL , rptr = 0LL ;
+    while(lptr<n){
+        while(rptr<n and curSum<l){
+            curSum += vec[rptr++] ;
+        }
+        if(curSum >= l and curSum <= r){
+            ans++ ; curSum = 0 ; lptr = rptr ;
+        }else{
+            curSum -= vec[lptr++] ;
+        }
+    }
+    cout << ans << endl ;
+}
