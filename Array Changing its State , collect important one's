@@ -36,3 +36,19 @@ void giveMeMyGloryBack() {
         cout << endl ;
     }
 }
+
+Ekhane else Block er condition ta arek vabe likha jay ,
+
+else{
+
+// Ekhane check kora hocche kuno peak value ache ki na , (10  15  12) ei case e y hobe -ve , (11 4 8) Ei case e x hobe negative. 
+
+        vll ans ; ans.pb(vec.front()) ;
+        for(int i = 1 ; i < n-1 ; i++){
+            ll x = vec[i]-vec[i-1] ;
+            ll y = vec[i+1]-vec[i] ;
+            if(x*y < 0) ans.pb(vec[i]) ;
+        }
+        ans.pb(vec.back()) ;
+        show(len(ans)) ; display(ans) ; sesh ;
+    }
