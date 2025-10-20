@@ -1,0 +1,38 @@
+/*Intuition :-
+    Proshner moddhe ekta permutation dewa ache n length er . Ei permutation theke
+    amader ke ekta subsequence pick korte hobe jekhane summation of difference 
+    between two adjacent element er value ta hoy highest . Jodi onek gula subsequence
+    pawa jay jader sum same tobe amader ke shrobo nimno size er subsequence nite hobe .
+
+    Amar approach ta hocche jei point gula teh array ta ascending ba descending theke
+    er biporit ta houwar try kortese oi point er element gula ke pick kora . Karon 
+    difference er summation e majkhaner point gular kuno importance nai .
+*/
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; vll vec(n) ; 
+    tamjid(n) cin >> vec[i] ; vll temp = vec ; flip(temp) ;
+    if(is_sorted(all(vec))){
+        cout << 2 << endl ;
+        cout << vec.front() << gap << vec.back() << endl ;
+    }else if(is_sorted(all(temp))){
+        cout << 2 << endl ;
+        cout << vec.front() << gap << vec.back() << endl ; 
+    }
+    else{
+        vll ans ; vll pref(n) ;
+        tamjid(n-1){
+            if(vec[i]>vec[i+1]) pref[i] = 1 ;
+        }
+        ll cntrl = 33 ;
+        for(int i = 0 ; i < len(pref) ; i++){
+            if(pref[i]!=cntrl){
+                ans.pb(vec[i]) ; cntrl = pref[i] ;
+            }
+        }
+        if(ans.back() != vec.back()) ans.pb(vec.back()) ;
+        cout << len(ans) << endl ;
+        display(ans) ; 
+        cout << endl ;
+    }
+}
