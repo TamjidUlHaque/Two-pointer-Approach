@@ -1,0 +1,27 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise amar kache ekta n size er array dewa ache .
+    Array er x tomo element er value holo 1 , baki value gula holo 0 . m songkhok
+    query dewa ache jekhane left and right boundary dewa ache jar vitore jekuno 
+    duita index er value amra swap korte parbo . Amader ke bolte hobe sorbuchho
+    koto gula index e amra 1 value ta ke nite parbo . 
+
+    Solve korar jonno jei intuition ta use korsi ta holo segment segment intersection.
+    Jodi current Low er value l ar r er moddhe hoy tahole l ar r er vitore shobgula
+    index e 1 pawa shomvob . Ekivabe jodi CurrentHigh er value l ar r er moddhe hoy tahole
+    l ar r er vitore shobgula index e 1 pawa shomvob . 
+*/
+
+void giveMeMyGloryBack() {
+    ll n , x , query ; cin >> n >> x >> query ; 
+    ll low = x ; ll high = x ;
+    while(query-->0){
+        ll l , r ; cin >> l >> r ;
+        if(l<= low and low <= r){
+            low = min(l,low) ; high = max(high,r) ;
+        }
+        if(l<= high and high <= r){
+            low = min(l,low) ; high = max(high,r) ;
+        }
+    }
+    cout << high-low+1 << endl ;
+}
